@@ -10,17 +10,19 @@
 - (void)add:(CDVInvokedUrlCommand*)command;
 - (void)substract:(CDVInvokedUrlCommand*)command;
 
+@end
+
 @implementation MathCalculator
 
 - (void)add:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
     NSNumber *param1 = [[command.arguments objectAtIndex:0] valueForKey:@"param1"];
-    NSNumber *param1 = [[command.arguments objectAtIndex:0] valueForKey:@"param2"];
-    if(param1 >=0 && param2 >= 0)  {
-        NSInteger sum = [param1 intValue] + [param2 intValue];
-        NSString *total = [NSString stringWithValue:@"%ld",sum];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:total];
+    NSNumber *param2 = [[command.arguments objectAtIndex:0] valueForKey:@"param2"];
+    if (param1 >=0 && param2 >= 0)  {
+        NSInteger sumValue = [param1 integerValue] + [param2 integerValue];
+        NSString *sumString = [NSString stringWithFormat:@"%ld",sumValue];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:sumString];
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
@@ -31,11 +33,11 @@
 {
     CDVPluginResult* pluginResult = nil;
     NSNumber *param1 = [[command.arguments objectAtIndex:0] valueForKey:@"param1"];
-    NSNumber *param1 = [[command.arguments objectAtIndex:0] valueForKey:@"param2"];
+    NSNumber *param2 = [[command.arguments objectAtIndex:0] valueForKey:@"param2"];
     if(param1 >=0 && param2 >= 0)  {
-        NSInteger substract = [param1 intValue] - [param2 intValue];
-        NSString *total = [NSString stringWithValue:@"%ld",substract];
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:total];
+        NSInteger substractValue = [param1 intValue] - [param2 intValue];
+        NSString *substractStr = [NSString stringWithFormat:@"%ld",substractValue];
+        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:substractStr];
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
